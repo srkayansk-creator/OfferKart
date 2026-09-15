@@ -1,1 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>OfferKart - Best Deals & Offers in India</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:#f5f6f8;
+  color:#222;
+}
+
+header{
+  background:#ffffff;
+  padding:15px;
+  position:sticky;
+  top:0;
+  z-index:10;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+.top{
+  max-width:1100px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.logo{
+  font-size:25px;
+  font-weight:800;
+  white-space:nowrap;
+}
+
+.logo span{
+  color:#ff6b00;
+}
+
+.search{
+  flex:1;
+  background:#f1f3f6;
+  border-radius:25px;
+  padding:12px 18px;
+  border:none;
+  outline:none;
+  font-size:15px;
+}
+
+.hero{
+  max-width:1100px;
+  margin:18px auto;
+  padding:35px 25px;
+  border-radius:18px;
+  background:linear-gradient(135deg,#ff7a00,#ffb000);
+  color:white;
+}
+
+.hero h1{
+  font-size:32px;
+  margin-bottom:10px;
+}
+
+.hero p{
+  font-size:16px;
+  margin-bottom:18px;
+}
+
+.hero button{
+  border:0;
+  padding:12px 20px;
+  border-radius:25px;
+  background:white;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:0 15px 30px;
+}
+
+.title{
+  font-size:22px;
+  font-weight:bold;
+  margin:25px 0 15px;
+}
+
+.categories{
+  display:flex;
+  gap:12px;
+  overflow-x:auto;
+  padding-bottom:8px;
+}
+
+.category{
+  background:white;
+  min-width:105px;
+  padding:15px 8px;
+  text-align:center;
+  border-radius:12px;
+  box-shadow:0 2px 7px rgba(0,0,0,.06);
+  font-size:14px;
+}
+
+.category div{
+  font-size:28px;
+  margin-bottom:7px;
+}
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.card{
+  background:white;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
+  position:relative;
+}
+
+.discount{
+  position:absolute;
+  top:10px;
+  left:10px;
+  background:#eaffea;
+  color:#168b35;
+  padding:5px 8px;
+  border-radius:6px;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.card img{
+  width:100%;
+  height:190px;
+  object-fit:cover;
+}
+
+.info{
+  padding:12px;
+}
+
+.name{
+  font-weight:bold;
+  min-height:40px;
+  font-size:15px;
+}
+
+.rating{
+  color:#f39c12;
+  font-size:13px;
+  margin:7px 0;
+}
+
+.old{
+  color:#888;
+  text-decoration:line-through;
+  font-size:13px;
+}
+
+.price{
+  font-size:20px;
+  font-weight:bold;
+  margin:3px 0 10px;
+}
+
+.deal{
+  display:block;
+  text-align:center;
+  background:#ff6b00;
+  color:white;
+  text-decoration:none;
+  padding:10px;
+  border-radius:8px;
+  font-weight:bold;
+}
+
+footer{
+  background:#202124;
+  color:white;
+  text-align:center;
+  padding:25px 15px;
+  margin-top:20px;
+}
+
+@media(max-width:800px){
+  .products{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+
+@media(max-width:600px){
+  .top{
+    flex-wrap:wrap;
+  }
+
+  .logo{
+    width:100%;
+  }
+
+  .search{
+    width:100%;
+    flex:none;
+  }
+
+  .hero h1{
+    font-size:25px;
+  }
+
+  .products{
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+  }
+
+  .card img{
+    height:150px;
+  }
+
+  .name{
+    font-size:14px;
+  }
+
+  .price{
+    font-size:18px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="top">
+    <div class="logo">🔥 Offer<span>Kart</span></div>
+    <input class="search" id="search"
+           type="text"
+           placeholder="Search for deals & products..."
+           onkeyup="searchProducts()">
+  </div>
+</header>
+
+<section class="hero">
+  <h1>🔥 Today's Best Deals</h1>
+  <p>Discover amazing offers and discounts from top online stores in India.</p>
+  <button onclick="document.getElementById('deals').scrollIntoView()">
+    Explore Deals →
+  </button>
+</section>
+
+<div class="container">
+
+  <div class="title">Shop by Category</div>
+
+  <div class="categories">
+    <div class="category"><div>📱</div>Mobiles</div>
+    <div class="category"><div>💻</div>Electronics</div>
+    <div class="category"><div>🎧</div>Audio</div>
+    <div class="category"><div>👕</div>Fashion</div>
+    <div class="category"><div>🏠</div>Home</div>
+    <div class="category"><div>💄</div>Beauty</div>
+    <div class="category"><div>⌚</div>Watches</div>
+  </div>
+
+  <div class="title" id="deals">🔥 Trending Deals</div>
+
+  <div class="products" id="products">
+
+    <div class="card" data-name="wireless earbuds">
+      <div class="discount">60% OFF</div>
+      <img src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=600&q=80">
+      <div class="info">
+        <div class="name">Wireless Earbuds</div>
+        <div class="rating">★ 4.3</div>
+        <div class="old">₹1,999</div>
+        <div class="price">₹799</div>
+        <a class="deal" href="#" target="_blank">GET DEAL →</a>
+      </div>
+    </div>
+
+    <div class="card" data-name="smart watch">
+      <div class="discount">45% OFF</div>
+      <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80">
+      <div class="info">
+        <div class="name">Smart Watch</div>
+        <div class="rating">★ 4.2</div>
+        <div class="old">₹2,999</div>
+        <div class="price">₹1,649</div>
+        <a class="deal" href="#" target="_blank">GET DEAL →</a>
+      </div>
+    </div>
+
+    <div class="card" data-name="headphones">
+      <div class="discount">50% OFF</div>
+      <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80">
+      <div class="info">
+        <div class="name">Wireless Headphones</div>
+        <div class="rating">★ 4.4</div>
+        <div class="old">₹2,499</div>
+        <div class="price">₹1,249</div>
+        <a class="deal" href="#" target="_blank">GET DEAL →</a>
+      </div>
+    </div>
+
+    <div class="card" data-name="backpack">
+      <div class="discount">40% OFF</div>
+      <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&q=80">
+      <div class="info">
+        <div class="name">Travel Backpack</div>
+        <div class="rating">★ 4.1</div>
+        <div class="old">₹1,499</div>
+        <div class="price">₹899</div>
+        <a class="deal" href="#" target="_blank">GET DEAL →</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <h3>🔥 OfferKart</h3>
+  <p>Best Deals & Offers in India</p>
+  <p style="margin-top:10px;font-size:12px;">
+    OfferKart is an affiliate website. Product prices and availability may change.
+  </p>
+</footer>
+
+<script>
+function searchProducts(){
+  let input=document.getElementById("search").value.toLowerCase();
+  let cards=document.querySelectorAll(".card");
+
+  cards.forEach(function(card){
+    let name=card.getAttribute("data-name");
+
+    if(name.includes(input)){
+      card.style.display="";
+    }else{
+      card.style.display="none";
+    }
+  });
+}
+</script>
+
+</body>
+    </html>
